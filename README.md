@@ -1,6 +1,6 @@
 # FinanceGigs.ai marketing site
 
-Static site hosted on Netlify (project `financegigs`). Pages: `index.html`, `employers.html`, `privacy.html`, `terms.html`, `thanks.html` (shown after the early access form, which Netlify Forms collects as `early-access`).
+Static site hosted on Netlify (project `financegigs`), linked to this repo since 2026-11-03: a merge to `main` publishes it. Pages: `index.html`, `employers.html`, `privacy.html`, `terms.html`, `thanks.html` (shown after the early access form, which Netlify Forms collects as `early-access`).
 
 Since November 2026 the pages are ported from the SupplyChainGigs site (github.com/mcadieux5252/supplychaingigs-site) with finance copy and the FinanceGigs red: free Sync and Sync+ pricing, join and sign-in links to app.financegigs.ai, and the employer page. When the SupplyChainGigs pages change, port the change here. `build.py` is the older generator and no longer matches these pages.
 
