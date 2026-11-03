@@ -11,3 +11,7 @@ The SMS consent wording on the app's join page (app.financegigs.ai/join), privac
 ## Twilio
 
 Toll-free number: +1 866 576 6017 (bought Sep 2026, verification not yet submitted). When submitting, enter the registration manually with this site as the business website, and use `https://financegigs.ai/optin-proof.png` as the opt-in image (a screenshot of app.financegigs.ai/join, taken 2026-11-03).
+
+## LinkedIn page images
+
+`linkedin/financegigs-linkedin-logo.png` (400 by 400) and `linkedin/financegigs-linkedin-banner.png` (4200 by 700, LinkedIn's cover size) are the FinanceGigs company page logo and cover, in the site's red and Inter type.
