@@ -164,7 +164,7 @@
   .split .body { font-size: 19px; line-height: 1.6; color: var(--muted); margin-bottom: 32px; }
   .checks { display: flex; flex-direction: column; gap: 16px; margin: 0 0 36px; padding: 0; list-style: none; }
   .checks li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; line-height: 1.4; }
-  .checks svg { flex-shrink: 0; margin-top: 2px; }
+  .checks svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
 
   /* Pricing */
   .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
@@ -289,33 +289,6 @@
     .cta { padding: 80px 16px; }
   }
 
-  /* Early access form (kept from the original FinanceGigs page) */
-  :root { --tint: #fdeef0; }
-  .join { background: #ffffff; padding: 120px 24px; }
-  .join-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
-  .join h2 { font-size: 44px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 20px; }
-  .join .body { font-size: 19px; line-height: 1.6; color: var(--muted); margin-bottom: 28px; }
-  .checks svg { color: var(--accent); }
-  .form { background: var(--soft); border-radius: 24px; padding: 36px; }
-  .form h3 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
-  .form .fine { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
-  .form .btn { border: none; cursor: pointer; font-family: inherit; }
-  .row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
-  label.f { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-  .form input[type=text], .form input[type=email], .form input[type=tel] { width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid #d2d2d7; border-radius: 12px; margin-bottom: 14px; }
-  .form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
-  .consent { display: flex; gap: 12px; align-items: flex-start; background: #ffffff; border-radius: 14px; padding: 16px; margin: 4px 0 20px; cursor: pointer; }
-  .consent input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--accent); }
-  .consent strong { display: block; font-size: 15px; margin-bottom: 6px; }
-  .consent span span { display: block; font-size: 13px; line-height: 1.5; color: var(--muted); }
-  .consent a { color: var(--accent); }
-  @media (max-width: 760px) {
-    .join { padding: 88px 16px; }
-    .join-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-    .join h2 { font-size: 32px; }
-    .form { padding: 24px; }
-    .row2 { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  }
   .video-section { padding: 96px 24px 0; text-align: center; }
   .video-section h2 { font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; }
   .video-section p { font-size: 17px; color: var(--muted); margin: 0 auto 28px; max-width: 560px; }
@@ -519,38 +492,6 @@
         </div>
       </div>
       <p class="texts-note">The weekly text begins as soon as our text number is approved. Until then, your weekly matches come by email, and every match is on your Job Alerts page.</p>
-    </div>
-  </section>
-
-  <!-- Early access -->
-  <section id="join" class="join">
-    <div class="wrap join-grid">
-      <div>
-        <h2>Be first in line.</h2>
-        <p class="body">We're opening FinanceGigs to a first group of accounting and finance professionals. Join the list and we'll text you when your membership is ready.</p>
-        <ul class="checks">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Membership is free</li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Build your match profile in about five minutes</li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Reply STOP anytime to stop texts</li>
-        </ul>
-      </div>
-      <form class="form" name="early-access" method="POST" action="/thanks" data-netlify="true">
-        <input type="hidden" name="form-name" value="early-access">
-        <h3>Get early access</h3>
-        <p class="fine">Takes 30 seconds.</p>
-        <div class="row2">
-          <div><label class="f" for="first">First name</label><input id="first" name="first_name" type="text" autocomplete="given-name" required></div>
-          <div><label class="f" for="last">Last name</label><input id="last" name="last_name" type="text" autocomplete="family-name" required></div>
-        </div>
-        <label class="f" for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required>
-        <label class="f" for="mobile">Mobile number</label><input id="mobile" name="mobile" type="tel" autocomplete="tel" placeholder="(555) 123-4567">
-        <label class="consent" for="sms">
-          <input id="sms" name="sms_consent" type="checkbox" value="yes">
-          <span><strong>Yes, text me job alerts at this number.</strong>
-          <span>I agree to receive recurring automated job alert texts from FinanceGigs at the mobile number provided. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase. See our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</span></span>
-        </label>
-        <button type="submit" class="btn btn-primary">Join the early access list</button>
-      </form>
     </div>
   </section>
 
