@@ -136,5 +136,25 @@
     <div class="foot-links"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="mailto:support@financegigs.ai">Contact</a></div>
   </div>
 </footer>
+<script>
+// Tracking tags (utm_source, utm_medium, utm_campaign) on the link someone came in on are carried to the app's Join and
+// team report links, so their sign-up records where it came from (LinkedIn DMs, Mike's /li comment link, newsletters).
+// Kept 30 days in this browser; a link that already has its own tags keeps them.
+(function () {
+  try {
+    var key = 'gigs-utm', q = new URLSearchParams(location.search), t = {};
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (n) { var v = q.get(n); if (v) t[n] = v.slice(0, 80); });
+    if (t.utm_source) localStorage.setItem(key, JSON.stringify({ t: t, at: Date.now() }));
+    else { var s = JSON.parse(localStorage.getItem(key) || 'null'); if (s && Date.now() - s.at < 2592e6) t = s.t; }
+    if (!t.utm_source) return;
+    document.querySelectorAll('a[href*="://app."]').forEach(function (a) {
+      var u = new URL(a.href);
+      if (!/^\/(join|team-pay)(\/|$)/.test(u.pathname) || u.searchParams.get('utm_source')) return;
+      for (var n in t) u.searchParams.set(n, t[n]);
+      a.href = u.toString();
+    });
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>

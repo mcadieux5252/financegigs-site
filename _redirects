@@ -1,0 +1,5 @@
+# Mike's LinkedIn comment link (Mike, 2026-11-12): financegigs.ai/li in a comment or reply, so sign-ups from his comments
+# are told apart from the DM campaign (utm_campaign t1-a and t1-b) and the brand page posts. The tags reach the app's
+# Join links through the script at the end of each page.
+/li    /?utm_source=linkedin&utm_medium=comment&utm_campaign=mike    302
+
