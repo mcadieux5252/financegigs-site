@@ -110,7 +110,7 @@
   <div class="nav-right"><a href="/">Home</a></div>
 </nav>
 <main class="doc">
-<div class="label">Legal</div><h1>Terms of Service</h1><p class="updated">Last updated: October 2026</p>
+<div class="label">Legal</div><h1>Terms of Service</h1><p class="updated">Last updated: November 2026</p>
 <p>These Terms govern your use of FinanceGigs, operated by Foundry Holdings Inc. DBA FinanceGigs ("we," "us," or "our"). By joining our early access list, creating an account or using our service, you agree to these Terms.</p>
 <h2>The service</h2>
 <p>FinanceGigs is a private job matching service for accounting and finance professionals. We match members with relevant open roles from employers&rsquo; own career sites and from employers who post with us, show them on the member&rsquo;s dashboard, and, for members who opt in, send a weekly SMS of their top matches. Members apply directly on the employer&rsquo;s own job page.</p>
@@ -119,7 +119,7 @@
 <h2>Accounts</h2>
 <p>You agree to provide accurate information and to keep your account secure. Membership is personal and non-transferable. We may approve or decline membership at our discretion.</p>
 <h2>Membership fees</h2>
-<p>Membership pricing will be shown before you are asked to pay. Paid memberships renew automatically until cancelled, and you can cancel at any time. Fees are non-refundable unless required by law.</p>
+<p>Membership pricing will be shown before you are asked to pay. Paid memberships renew automatically until cancelled, and you can cancel at any time; a cancelled membership stays active until the end of the period already paid. One-time purchases, such as a report, are charged once at checkout and do not renew. Fees are non-refundable unless required by law.</p>
 <h2>Acceptable use</h2>
 <ul><li>Do not provide false or misleading information</li><li>Use the service only for a genuine job search or hiring</li><li>Do not share or sell your account access</li><li>Do not use automated means to access or scrape the service</li></ul>
 <h2>Employers</h2>
@@ -149,7 +149,7 @@
     if (!t.utm_source) return;
     document.querySelectorAll('a[href*="://app."]').forEach(function (a) {
       var u = new URL(a.href);
-      if (!/^\/(join|team-pay)(\/|$)/.test(u.pathname) || u.searchParams.get('utm_source')) return;
+      if (!/^\/(join|team-pay|pay-report)(\/|$)/.test(u.pathname) || u.searchParams.get('utm_source')) return;
       for (var n in t) u.searchParams.set(n, t[n]);
       a.href = u.toString();
     });
