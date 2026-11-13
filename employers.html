@@ -251,6 +251,19 @@
     .funnel-arrow { transform: rotate(90deg); }
     .funnel-num { font-size: 44px; }
   }
+  .nav-menu { position: relative; }
+  .nav-menu-btn { background: none; border: 0; padding: 16px 0; font: inherit; font-size: 14px; color: var(--ink); cursor: pointer; display: flex; align-items: center; gap: 5px; }
+  .nav-menu-btn:hover { color: var(--muted); }
+  .nav-menu-btn svg { transition: transform 0.15s; }
+  .nav-menu:hover .nav-menu-btn svg, .nav-menu:focus-within .nav-menu-btn svg { transform: rotate(180deg); }
+  .nav-drop { display: none; position: absolute; top: 100%; left: -14px; width: 320px; background: #ffffff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12); padding: 8px; }
+  .nav-menu:hover .nav-drop, .nav-menu:focus-within .nav-drop { display: block; }
+  .nav-drop a { display: block; padding: 10px 12px; border-radius: 10px; }
+  .nav-drop a:hover, .nav-drop a:focus { background: var(--soft); outline: none; }
+  .nav-drop b { display: block; font-size: 14px; font-weight: 600; color: var(--ink); }
+  .nav-group { margin: 8px 12px 2px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .nav-group:first-child { margin-top: 4px; }
+  .nav-drop span { display: block; font-size: 13px; line-height: 1.4; color: var(--muted); margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -258,9 +271,26 @@
 <nav class="nav" aria-label="Main">
   <a href="/" class="nav-logo" aria-label="FinanceGigs.AI home">FinanceGigs<span class="ai">.AI</span></a>
   <div class="nav-right">
-    <a href="/" class="nav-link nav-hide">For Finance Pros</a>
-    <a href="#how" class="nav-link nav-hide">How it works</a>
-    <a href="#search" class="nav-link nav-hide">Search options</a>
+    <div class="nav-menu nav-hide">
+      <button type="button" class="nav-menu-btn" aria-haspopup="true">For Finance Pros <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav-drop">
+        <p class="nav-group">Career Intelligence</p>
+        <a href="/#how"><b>Sync</b><span>Free. Roles matched to your profile every day, plus weekly news and a monthly market report.</span></a>
+        <a href="/#pricing"><b>Sync+</b><span>$19.99 a month. Instant alerts, tailored CVs and negotiation playbooks.</span></a>
+        <p class="nav-group">Compensation Intelligence</p>
+        <a href="/compensation"><b>Personal Compensation Reports</b><span>$29.99. Your pay against the market and what to ask for at review time.</span></a>
+      </div>
+    </div>
+    <div class="nav-menu nav-hide">
+      <button type="button" class="nav-menu-btn" aria-haspopup="true">For Employers <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav-drop">
+        <p class="nav-group">Candidate Intelligence</p>
+        <a href="/employers"><b>Hire finance talent</b><span>Free account. Send your role to the members it fits, with no recruiter fees.</span></a>
+        <a href="https://app.financegigs.ai/post-a-role"><b>Post a role</b><span>Pay per role. See how many members match before you pay.</span></a>
+        <p class="nav-group">Compensation Intelligence</p>
+        <a href="/team-compensation"><b>Team Compensation Reports</b><span>Free during launch. Market pay for every role on your team, by city, industry and size.</span></a>
+      </div>
+    </div>
     <a href="#pricing" class="nav-link nav-hide">Pricing</a>
     <a href="https://app.financegigs.ai/auth/login" class="nav-link">Sign in</a>
     <a href="https://app.financegigs.ai/post-a-role" class="nav-join">Post a role</a>
@@ -511,11 +541,11 @@
     <div class="foot-cols">
       <div>
         <div class="foot-head">Finance pros</div>
-        <div class="foot-links"><a href="/#how">How it works</a><a href="/#pricing">Pricing</a><a href="https://app.financegigs.ai/join">Join</a><a href="https://app.financegigs.ai/auth/login">Member sign in</a></div>
+        <div class="foot-links"><a href="/#how">How it works</a><a href="/compensation">Compensation Intelligence</a><a href="/#pricing">Pricing</a><a href="https://app.financegigs.ai/join">Join</a><a href="https://app.financegigs.ai/auth/login">Member sign in</a></div>
       </div>
       <div>
         <div class="foot-head">Employers</div>
-        <div class="foot-links"><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="https://app.financegigs.ai/post-a-role">Post a role</a><a href="https://app.financegigs.ai/auth/login">Employer sign in</a></div>
+        <div class="foot-links"><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="/team-compensation">Team Compensation Report</a><a href="https://app.financegigs.ai/post-a-role">Post a role</a><a href="https://app.financegigs.ai/auth/login">Employer sign in</a></div>
       </div>
       <div>
         <div class="foot-head">Company</div>
