@@ -552,7 +552,7 @@
     if (!t.utm_source) return;
     document.querySelectorAll('a[href*="://app."]').forEach(function (a) {
       var u = new URL(a.href);
-      if (!/^\/(join|team-pay)(\/|$)/.test(u.pathname) || u.searchParams.get('utm_source')) return;
+      if (!/^\/(join|team-pay|pay-report)(\/|$)/.test(u.pathname) || u.searchParams.get('utm_source')) return;
       for (var n in t) u.searchParams.set(n, t[n]);
       a.href = u.toString();
     });
