@@ -26,10 +26,15 @@ jobs:
       - name: Build the Hiring Trends pages
         run: node scripts/hiring-trends.mjs
       - name: Commit them if they changed
+        id: commit
         run: |
           git add hiring-trends hiring-trends.html sitemap.xml
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
           git config user.name "hiring-trends-bot"
           git config user.email "hiring-trends-bot@users.noreply.github.com"
           git commit -m "Hiring Trends: refresh from the latest approved month"
           git push
+      - name: Tell search engines about the new pages (IndexNow)
+        if: steps.commit.outputs.changed == 'true'
+        run: node scripts/indexnow.mjs
