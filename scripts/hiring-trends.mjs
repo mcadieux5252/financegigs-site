@@ -1,4 +1,4 @@
-// Builds the Hiring Trends pages from the app's public data at deploy time (Dev Spec: Hiring Trends Pages, Nov 2026),
+// Builds the Hiring Trends pages (and the blog, scripts/blog.mjs) from the app's public data at deploy time (Dev Spec: Hiring Trends Pages, Nov 2026),
 // so search engines and AI assistants read plain HTML with every number in it:
 //   /hiring-trends            the latest approved month (hiring-trends.html)
 //   /hiring-trends/<yyyy-mm>  every published month, kept for good (never deleted)
@@ -12,6 +12,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
+import { buildBlog } from './blog.mjs'
 
 const BRAND = 'finance'
 const NAME = 'FinanceGigs'
@@ -20,6 +21,7 @@ const API = process.env.HIRING_TRENDS_API || 'https://app.financegigs.ai/api/pub
 const SHELL = 'compensation.html'
 const STATIC_PAGES = ['/', '/compensation', '/team-compensation', '/employers', '/privacy', '/terms']
 const OG_IMAGE = 'https://financegigs.ai/og-image.png'
+const APP = 'https://app.financegigs.ai'
 
 const ROOT = process.cwd()
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -113,6 +115,10 @@ ${items}
   urls.push({ loc: `${SITE}/hiring-trends/archive`, lastmod: isoDay(latest.asOf) })
 }
 
+// The blog (scripts/blog.mjs): its pages, and its posts in the sitemap and llms.txt
+const blog = buildBlog({ root: ROOT, page, write, SITE, NAME, BRAND, APP, OG_IMAGE })
+urls.push(...blog.urls)
+
 writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}
@@ -131,4 +137,4 @@ const scan = dir => {
 }
 scan(ROOT)
 if (bad.length) { console.error(`Em dash found in: ${bad.join(', ')}`); process.exit(1) }
-console.log(`Hiring Trends: ${latest ? `${months.length} month(s), latest ${latest.period}` : 'no approved month yet, holding page'}; sitemap ${urls.length} URLs`)
+console.log(`Hiring Trends: ${latest ? `${months.length} month(s), latest ${latest.period}` : 'no approved month yet, holding page'}; blog ${blog.posts.length} post(s); sitemap ${urls.length} URLs`)
