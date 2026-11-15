@@ -3,3 +3,6 @@
 # Join links through the script at the end of each page.
 /li    /?utm_source=linkedin&utm_medium=comment&utm_campaign=mike    302
 
+# The latest Hiring Trends page (scripts/hiring-trends.mjs) is hiring-trends.html; the month pages sit in the hiring-trends
+# folder beside it, so the address is mapped to the file here instead of to the folder
+/hiring-trends    /hiring-trends.html    200!

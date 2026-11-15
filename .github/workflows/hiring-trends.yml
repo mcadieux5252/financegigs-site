@@ -27,7 +27,7 @@ jobs:
         run: node scripts/hiring-trends.mjs
       - name: Commit them if they changed
         run: |
-          git add hiring-trends sitemap.xml
+          git add hiring-trends hiring-trends.html sitemap.xml
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
           git config user.name "hiring-trends-bot"
           git config user.email "hiring-trends-bot@users.noreply.github.com"

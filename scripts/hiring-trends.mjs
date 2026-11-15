@@ -1,6 +1,6 @@
 // Builds the Hiring Trends pages from the app's public data at deploy time (Dev Spec: Hiring Trends Pages, Nov 2026),
 // so search engines and AI assistants read plain HTML with every number in it:
-//   /hiring-trends            the latest approved month
+//   /hiring-trends            the latest approved month (hiring-trends.html)
 //   /hiring-trends/<yyyy-mm>  every published month, kept for good (never deleted)
 //   /hiring-trends/archive    the list of months
 //   /sitemap.xml              this site's pages, with the Hiring Trends pages and their dates
@@ -63,10 +63,13 @@ function page({ title, description, canonical, jsonLd = [], css = '', main, noin
   return `${baseHead}\n${tags}\n</head>${nav}<main>\n${main}\n</main>${tail}`
 }
 
+// Each page is a file named after its path (hiring-trends.html, hiring-trends/2026-11.html), the way this site serves
+// /compensation: Netlify answers a folder's address with a redirect to its trailing slash, which the canonical address
+// must not do. _redirects maps /hiring-trends itself to its file, since the hiring-trends folder sits beside it.
 function write(path, html) {
-  const dir = join(ROOT, path)
-  mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, 'index.html'), html)
+  const file = join(ROOT, `${path}.html`)
+  mkdirSync(join(file, '..'), { recursive: true })
+  writeFileSync(file, html)
 }
 
 const { months } = await get('period=all')
