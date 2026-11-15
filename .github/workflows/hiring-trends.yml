@@ -1,4 +1,4 @@
-# Publishes the Hiring Trends pages (scripts/hiring-trends.mjs) every day, after the app's daily snapshot run at
+# Publishes the Hiring Trends pages (scripts/hiring-trends.mjs) and the blog posts whose day has come (scripts/blog.mjs) every day, after the app's daily snapshot run at
 # 13:17 UTC: builds them from the app's public data and commits them only when something changed. The commit is what
 # makes Netlify deploy the site, so a newly approved month goes live within the day with no build hook or key.
 name: Hiring Trends
@@ -23,17 +23,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Build the Hiring Trends pages
+      - name: Build the Hiring Trends pages and the blog
         run: node scripts/hiring-trends.mjs
       - name: Commit them if they changed
         id: commit
         run: |
-          git add hiring-trends hiring-trends.html sitemap.xml
+          git add hiring-trends hiring-trends.html sitemap.xml blog.html llms.txt $( [ -d blog ] && echo blog )
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
           git config user.name "hiring-trends-bot"
           git config user.email "hiring-trends-bot@users.noreply.github.com"
-          git commit -m "Hiring Trends: refresh from the latest approved month"
+          git commit -m "Hiring Trends and blog: refresh the built pages"
           git push
       - name: Tell search engines about the new pages (IndexNow)
         if: steps.commit.outputs.changed == 'true'

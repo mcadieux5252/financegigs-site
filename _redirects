@@ -6,3 +6,6 @@
 # The latest Hiring Trends page (scripts/hiring-trends.mjs) is hiring-trends.html; the month pages sit in the hiring-trends
 # folder beside it, so the address is mapped to the file here instead of to the folder
 /hiring-trends    /hiring-trends.html    200!
+
+# The blog index (scripts/blog.mjs) is blog.html; the posts sit in the blog folder beside it
+/blog    /blog.html    200!
