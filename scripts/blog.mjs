@@ -24,6 +24,7 @@ export const BLOG_CSS = `.blog{max-width:760px;margin:0 auto;padding:32px 20px;l
 .blog td{font-variant-numeric:tabular-nums}.blog thead th{font-size:13px;color:#424245}
 .blog .bl-join{background:#f5f5f7;border-radius:16px;padding:8px 24px 20px;margin-top:36px}
 .blog .bl-button{display:inline-block;padding:12px 22px;border-radius:980px;color:#fff;background:#1d1d1f;text-decoration:none;font-weight:600}
+.blog .bl-quote{margin:20px 0;padding:4px 0 4px 18px;border-left:3px solid #1d1d1f;font-size:17px}.blog .bl-credit{color:#6e6e73;font-size:14px;margin-top:-6px}
 .blog .bl-list{list-style:none;padding:0}.blog .bl-list li{padding:16px 0;border-bottom:1px solid #e5e5ea}
 .blog .bl-list a{font-size:19px;font-weight:600}
 .blog p a,.blog li a,.blog .bl-crumbs a,.blog .bl-meta a{color:inherit;text-decoration:underline;text-underline-offset:2px}`
@@ -80,6 +81,14 @@ export function markdown(src) {
         body.map(r => `<tr>${r.map((c, j) => j === 0 ? `<th scope="row">${inline(c)}</th>` : `<td>${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`)
       continue
     }
+    if (/^>\s?/.test(l)) {
+      // A member expert's quote: "> text" lines, the last one the credit (name and job title)
+      const q = []
+      while (i < lines.length && /^>\s?/.test(lines[i])) { q.push(lines[i].replace(/^>\s?/, '').trim()); i++ }
+      const credit = q.length > 1 ? q.pop() : ''
+      out.push(`<blockquote class="bl-quote"><p>${inline(q.join(' '))}</p>${credit ? `<p class="bl-credit">${inline(credit)}</p>` : ''}</blockquote>`)
+      continue
+    }
     if (/^(-|\d+\.)\s+/.test(l)) {
       const ordered = /^\d+\./.test(l), items = []
       while (i < lines.length && /^(-|\d+\.)\s+/.test(lines[i])) { items.push(lines[i].replace(/^(-|\d+\.)\s+/, '')); i++ }
@@ -89,7 +98,7 @@ export function markdown(src) {
       continue
     }
     const para = []
-    while (i < lines.length && lines[i].trim() && !/^(#{2,3}\s|Table:|\||-\s|\d+\.\s)/.test(lines[i])) { para.push(lines[i].trim()); i++ }
+    while (i < lines.length && lines[i].trim() && !/^(#{2,3}\s|Table:|\||-\s|\d+\.\s|>)/.test(lines[i])) { para.push(lines[i].trim()); i++ }
     const text = para.join(' ')
     out.push(`<p>${inline(text)}</p>`)
     if (section && !section.a) section.a = plain(text)
