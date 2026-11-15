@@ -1,0 +1,35 @@
+# Publishes the Hiring Trends pages (scripts/hiring-trends.mjs) every day, after the app's daily snapshot run at
+# 13:17 UTC: builds them from the app's public data and commits them only when something changed. The commit is what
+# makes Netlify deploy the site, so a newly approved month goes live within the day with no build hook or key.
+name: Hiring Trends
+
+on:
+  schedule:
+    - cron: '5 14 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hiring-trends
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build the Hiring Trends pages
+        run: node scripts/hiring-trends.mjs
+      - name: Commit them if they changed
+        run: |
+          git add hiring-trends sitemap.xml
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git config user.name "hiring-trends-bot"
+          git config user.email "hiring-trends-bot@users.noreply.github.com"
+          git commit -m "Hiring Trends: refresh from the latest approved month"
+          git push

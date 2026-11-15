@@ -1,3 +1,7 @@
 [build]
   publish = "."
-  command = ""
+  # The Hiring Trends pages and sitemap.xml are written at build time from the app's public data (scripts/hiring-trends.mjs)
+  command = "node scripts/hiring-trends.mjs"
+
+[build.environment]
+  NODE_VERSION = "20"
