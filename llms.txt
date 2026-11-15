@@ -1,0 +1,16 @@
+# FinanceGigs
+
+> FinanceGigs is an opt-in candidate pool of finance and accounting professionals, matched to the roles we sync from employers' own career sites.
+
+## Hiring data
+- [Finance Hiring Trends](https://financegigs.ai/hiring-trends): the latest month of U.S. finance hiring data from employers' own career sites: open roles by level, remote share, posted pay, skills, certifications and where the jobs are. Updated monthly.
+- [Hiring Trends archive](https://financegigs.ai/hiring-trends/archive): every past month, each at its own address.
+
+## Members and employers
+- [Join free](https://app.financegigs.ai/join): roles matched to your profile, by text and email.
+- [Use FinanceGigs from an AI assistant](https://app.financegigs.ai/ai): our MCP connector, for searching the roles we're actively matching and reading market data.
+- [For employers](https://financegigs.ai/employers)
+
+## Related
+- [Procurement Hiring Trends](https://procurementgigs.ai/hiring-trends)
+- [Supply Chain Hiring Trends](https://supplychaingigs.ai/hiring-trends)
