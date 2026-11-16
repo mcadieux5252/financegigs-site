@@ -4,8 +4,12 @@
 name: Hiring Trends
 
 on:
+  # GitHub runs scheduled workflows late or skips them when busy (Nov 15: 5.5 hours late, Nov 16: not by 14:40 UTC),
+  # so two backup times at quiet minutes. A run with nothing new commits nothing.
   schedule:
     - cron: '5 14 * * *'
+    - cron: '37 17 * * *'
+    - cron: '43 21 * * *'
   workflow_dispatch:
 
 permissions:
