@@ -8,6 +8,7 @@
 
 ## Blog
 - [FinanceGigs Blog](https://financegigs.ai/blog): plain answers to career questions, from our own job posting data.
+- [Which finance certifications do employers actually ask for?](https://financegigs.ai/blog/finance-certifications-employers-want): How often U.S. finance job postings name the CPA, CFA, CMA, CIA, CISA and CTP in 2026, overall and by level.
 - [What is risk and controls work in finance, and who does it?](https://financegigs.ai/blog/finance-risk-and-controls): How often U.S. finance job postings ask for internal controls, SOX, audit and risk management work in 2026, by level.
 - [What should finance professionals watch in the 2027 job market?](https://financegigs.ai/blog/finance-job-market-2027): What U.S. finance job postings ask for going into 2027: skills, systems, hybrid work by level, posted pay and the CPA.
 - [What does a finance manager earn in 2026?](https://financegigs.ai/blog/finance-manager-salary-2026): Posted pay for U.S. finance managers in 2026, from live roles on employers' own career sites, with every level from Analyst to VP.
